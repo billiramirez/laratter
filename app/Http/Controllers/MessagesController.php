@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateMessageRequest;
 use App\Message;
 use Illuminate\Http\Request;
 
@@ -19,10 +20,17 @@ class MessagesController extends Controller
         ]);
     }
 
-    public function create(Request $request)
+    public function create(CreateMessageRequest $request)
     {
-        dd($request->all());
-        return 'Creado';
+
+//        Adding the array plus into the validation we can costume our feedback messages when they are displayed in the form
+
+        $message = Message::create([
+              'content' => $request->input('message'),
+              'image' => 'http://lorempixel.com/600/338?'.mt_rand(0, 1000)
+          ]);
+
+        return redirect('/messages/'.$message->id);
     }
 }
 
