@@ -6,3 +6,7 @@
     <a href="/messages/{{$message->id}}">Leer mas...</a>
 </p>
 
+<div class="card-text text-muted float-right">
+    {{ $message->created_at }}
+</div>
+
