@@ -68,6 +68,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'avatar' => 'http://lorempixel.com/300/300/people?'.random_int(1,1000),
         ]);
     }
 }
