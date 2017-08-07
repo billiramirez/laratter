@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','username', 'avatar', 'email', 'password',
+        'name', 'username', 'avatar', 'email', 'password',
     ];
 
     /**
@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
 }
