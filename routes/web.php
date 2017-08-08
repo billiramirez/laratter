@@ -18,6 +18,8 @@ Route::get('/messages/{message}', 'MessagesController@show');
 Route::post('messages/create', 'MessagesController@create')->middleware('auth');
 
 Auth::routes();
+Route::get('/auth/facebook', 'SocialAuthController@facebook');
+Route::get('/auth/facebook/callback', 'SocialAuthController@callback');
 
 Route::get('/home', 'HomeController@index');
 
