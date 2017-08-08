@@ -16,6 +16,7 @@ class UsersController extends Controller
         ]);
     }
 
+    /** This method is made for follow a user**/
     public function follow($username, Request $request)
     {
         $user = $this->findByUsername($username);/** Searching the user we clicked **/
@@ -27,12 +28,36 @@ class UsersController extends Controller
 
     }
 
+    /** This method is made for unfollow a user**/
+    public function unfollow($username, Request $request)
+    {
+        $user = $this->findByUsername($username);/** Searching the user we clicked **/
+        $me = $request->user(); /** The request in order to know who is logged**/
+
+        $me->follows()->detach($user); /** detach the clicked user to the current user**/
+
+        return redirect('/'.$username)->withSuccess('Usuario No Seguido');
+
+    }
+
+    /** This method is made for showing the a user follow**/
     public function follows($username)
     {
         $user = $this->findByUsername($username);
 
         return view('users.follows',[
-            'user' => $user
+            'user' => $user,
+            'follows' => $user->follows,
+        ]);
+    }
+
+    public function followers($username)
+    {
+        $user = $this->findByUsername($username);
+
+        return view('users.follows',[
+            'user' => $user,
+            'follows' => $user->followers,
         ]);
     }
 
