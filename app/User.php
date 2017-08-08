@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->follows->contains($user);/** We check if a user follow another user, return a boolean**/
     }
+
+    public function socialProfiles()
+    {
+        return $this->hasMany(SocialProfile::class);
+    }
 }
