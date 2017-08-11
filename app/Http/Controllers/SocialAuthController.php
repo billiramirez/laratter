@@ -27,7 +27,7 @@ class SocialAuthController extends Controller
             auth()->login($existing);
             return redirect('/');
         }
-        
+
         session()->flash('FacebookUser',$user);
 
         return view('users.facebook', [
