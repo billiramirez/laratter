@@ -30,4 +30,11 @@ class Message extends Model
 
         return \Storage::disk('public')->url($image);
     }
+
+            public function toSearchableArray()
+            {
+                $this->load('user');
+                return $this->toArray();
+
+            }
 }
