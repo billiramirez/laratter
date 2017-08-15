@@ -20,4 +20,10 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testCanSearchForMessages()
+    {
+        $response = $this->get('/messages?query=Alice');
+        $response->assertSee('Alice');
+    }
 }
