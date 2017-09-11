@@ -31,9 +31,11 @@ Route::group(['middleware' => 'auth'], function (){
     Route::post('/{username}/dms','UsersController@sendPrivateMessage');
     Route::post('/{username}/follow', 'UsersController@follow');
     Route::post('/{username}/unfollow', 'UsersController@unfollow');
+    Route::get('/api/notifications', 'UserController@notifications');
 });
 
 Route::get('/api/messages/{message}/responses', 'MessagesController@responses');
+
 
 
 Route::get('/{username}/follows','UsersController@follows');
