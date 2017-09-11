@@ -49,6 +49,11 @@ class MessagesController extends Controller
         ]);
     }
 
+    public function responses(Message $message)
+    {
+        return $message->responses;
+    }
+
 
 }
 
