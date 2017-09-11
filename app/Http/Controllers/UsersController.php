@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Conversation;
 use App\User;
+use App\Notifications\UserFollowed;
 use Illuminate\Http\Request;
 use App\PrivateMessage;
 
@@ -26,6 +27,8 @@ class UsersController extends Controller
         $me = $request->user(); /** The request in order to know who is logged**/
 
         $me->follows()->attach($user); /** attach the clicked user to the current user**/
+
+        $user->notify(new UserFollowed($me));
 
          return redirect('/'.$username)->withSuccess('Usuario Seguido');
 
